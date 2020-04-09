@@ -38,13 +38,37 @@ project 1 - A Random Quote Generator
 ***/
 
 const quotes = [
-  {},
-  {},
-  {},
-  {},
-  {}
+  {
+    quote: `The most regretful people on earth are those who felt the call to creative work, who felt their own creative power restive and uprising, and gave to it neither power nor time.`,
+    source: `Mary Oliver`,
+    citation: `Oliver, Mary. Upstream: Select Essays. , 2016. Print.`,
+    year: `2016`
+  },
+  {
+    quote: `Humor, more than anything else in the human make-up, can afford an aloofness and an ability to rise above any situation, even if only for a few seconds.`,
+    source: `Viktor Frankl`,
+    citation: `Frankl, Viktor E. Man's Search for Meaning: An Introduction to Logotherapy. , 1992. Print.`,
+    year: `1992`
+  },
+  {
+    quote: `That which one has set oneself to do, one should not relinquish on the grounds of absence of mind or distraction.`,
+    source: `Leo Tolstoy`,
+    citation: `Tolstoy, Leo, V G. Chertkov, C J. Hogarth, and Alexander Sirnis. The Diaries of Leo Tolstoy. New York: Dutton, 1917. Print.`,
+    year: `1917`
+  },
+  {
+    quote: `“Life’s essence should always be clearly noticeable behind the love, or the music, or the work.”`,
+    source: `Werner Heisenberg`,
+    citation: `Heisenberg, Werner, Anna M. Hirsch-Heisenberg, Irene Heisenberg, Werner Heisenberg, and Elisabeth Heisenberg. My Dear Li: Correspondence 1937-1946. , 2016. Print.`,
+    year: `2016`
+  },
+  {
+    quote: `One of the functions of art is to give people the words to know their own experience. There are always areas of vast silence in any culture, and part of an artist’s job is to go into those areas and come back from the silence with something to say.`,
+    source: `Ursula K. Le Guin `,
+    citation: `White, Jonathan. Talking on the Water: Conversations About Nature and Creativity. , 2016. Print.`,
+    year: `2016`
+  }
 ];
-
 
 
 /***

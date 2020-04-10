@@ -75,7 +75,12 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 
+const getRandomQuote = arr => {
+  let num = Math.floor(Math.random() * Math.floor(arr.length));
+  return arr[num]['quote'];
+};
 
+console.log(getRandomQuote(quotes));
 
 /***
  * `printQuote` function
@@ -88,4 +93,4 @@ const quotes = [
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// document.getElementById('load-quote').addEventListener("click", printQuote, false);

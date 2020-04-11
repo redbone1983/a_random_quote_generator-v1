@@ -4,12 +4,11 @@
  */
 
  @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
-
+ 
 body {
-  background-color: rgb(45, 80, 197);
+  background-color: rgb(187, 88, 88);
   color: white;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Playfair', serif;
   padding: 5px;
 }
 
@@ -113,6 +112,22 @@ h1 {
 
 .year:before {
   content: ", ";
+  font-style: normal;
+}
+
+div .tag {
+  background: rgba(10, 10, 10, 0.25);
+  line-height: 22px;
+  padding: 5px 10px;
+  font-size: 15px;
+  display: block;
+  font-style: italic;
+  box-sizing: inherit;
+  text-align: left;
+}
+
+.tag:before {
+  content: "# ";
   font-style: normal;
 }
 

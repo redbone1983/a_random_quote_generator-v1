@@ -29,7 +29,8 @@ const quotes = [
     quote: `That which one has set oneself to do, one should not relinquish on the grounds of absence of mind or distraction.`,
     source: `Leo Tolstoy`,
     citation: `Tolstoy, Leo, V G. Chertkov, C J. Hogarth, and Alexander Sirnis. The Diaries of Leo Tolstoy. New York: Dutton`,
-    year: `1917`
+    year: `1917`,
+    tag: `adhd`
   },
   {
     quote: `Life’s essence should always be clearly noticeable behind the love, or the music, or the work.`,
@@ -89,6 +90,10 @@ const generateHtmlString = quoteObject => {
     if (prop === 'year'){
       htmlString += `<span class="year">${quoteObject["year"]}</span>`;
     }
+    if (prop === 'tag'){
+      htmlString += `<div class="tag">${quoteObject["tag"]}</div>`;
+    }
+
     
   }
   htmlString += `</p>`;

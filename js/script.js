@@ -46,21 +46,39 @@ const quotes = [
 ];
 
 
+
 /***
- * `getRandomQuote` function
+ * `getRandomNumber` function
+ * Generates a random number for selecting an array item
+ * @param {array} quotesList - An array of quote objects
+ * @return {number} - A random number
 ***/
 
-const getRandomQuote = arr => {
+const getRandomNumber = arr => {
   let num = Math.floor(Math.random() * Math.floor(arr.length));
-  return arr[num];
+  return num;
+}
+
+/***
+ * `getRandomQuote` function
+ * Gets a quote object from the quotes array
+ * @param {array} quotesList - An array of quote objects
+ * @return {object} - A quote object
+***/
+
+const getRandomQuoteObj = quotesList => {
+  let quoteObject = quotesList[getRandomNumber(quotesList)];
+  return quoteObject;
 };
 
 /***
- * `printQuote` function
+ * `generateHtmlString` function
+ * Generates a quote string
+ * @param {object} quoteObject - A quote object
+ * @return {string} - A quote string
 ***/
 
-const printQuote = () => {
-  let quoteObject = getRandomQuote(quotes);
+const generateHtmlString = quoteObject => {
   let htmlString = `<p class="quote">${quoteObject['quote']}</p>`;
   htmlString += `<p class="source">${quoteObject['source']}`;
 
@@ -70,12 +88,23 @@ const printQuote = () => {
     } 
     if (prop === 'year'){
       htmlString += `<span class="year">${quoteObject["year"]}</span>`;
-      htmlString += `</p>`;
     }
     
   }
-  
-  document.querySelector(`#quote-box`).innerHTML = htmlString;
+  htmlString += `</p>`;
+  return htmlString;
+}
+
+
+/***
+ * `printQuote` function
+ * Selects a place in the DOM to render an html string
+ * @param {string} quoteString - A quote string
+ * @return {void} Nothing
+***/
+
+const printQuote = () => {
+  document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
 };
 
 /***
@@ -83,4 +112,5 @@ const printQuote = () => {
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
+// Selects the button element in the DOM that when clicked, invokes the printQuote function
 document.getElementById('load-quote').addEventListener("click", printQuote, false);

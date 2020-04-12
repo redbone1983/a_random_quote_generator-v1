@@ -117,33 +117,36 @@ const changeBGColor = () => {
 ***/
 
 
+
+
+let stopInterval;
+
 const printQuote = () => {
-  let count = 0;
-  let idInterval = setInterval(function() {
-    changeBGColor();
-    document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
-    count += 1;
-    if (count === 5) {
-      clearInterval(idInterval);
+  stopInterval = false;
+  let id = setInterval(function() {
+    if (stopInterval) {
+      clearInterval(id);
+    } else {
+      changeBGColor();
+      document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
     }
- }, 10000);
-  
-};
+  }, 10000);
+}
 
-// const stopQuote = id =>
-//   clearInterval(id);
-// }
-
-
+const stopQuote = () => stopInterval = true;
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-// Selects the button element in the DOM that when clicked, invokes the printQuote function
-
+// Selects the `Show another quote` button in the DOM that when clicked, invokes the printQuote function
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+// Selects the `Stop slideshow` button in the DOM that when clicked, invokes the stopQuote function
+document.getElementById('stop-quote').addEventListener("click", stopQuote, false);
+
+
 
 
 

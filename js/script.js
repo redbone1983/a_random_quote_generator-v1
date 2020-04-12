@@ -100,6 +100,14 @@ const generateHtmlString = quoteObject => {
   return htmlString;
 }
 
+const changeBGColor = () => {
+  red = Math.floor(Math.random() * 256);
+  green = Math.floor(Math.random() * 256);
+  blue = Math.floor(Math.random() * 256);
+  rgbColor = `rgb(${red}, ${green}, ${blue}`;
+
+  document.querySelector('body').style.backgroundColor = `${rgbColor}`;
+}
 
 /***
  * `printQuote` function
@@ -109,6 +117,7 @@ const generateHtmlString = quoteObject => {
 ***/
 
 const printQuote = () => {
+  changeBGColor();
   document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
 };
 

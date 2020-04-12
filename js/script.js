@@ -116,23 +116,29 @@ const changeBGColor = () => {
  * @return {void} Nothing
 ***/
 
-
-
-
+// Declares a variable to store the current state of setInterval
 let stopInterval;
 
 const printQuote = () => {
+  // Initializing this to store a false boolean
   stopInterval = false;
+  
   let id = setInterval(function() {
+    // If the setInterval should stop
     if (stopInterval) {
+      // stop it
       clearInterval(id);
+    
+    // Otherwise
     } else {
+      // The program continues to run
       changeBGColor();
       document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
     }
   }, 10000);
 }
 
+// When invoked, this will stop the quote slideshow from running
 const stopQuote = () => stopInterval = true;
 
 /***

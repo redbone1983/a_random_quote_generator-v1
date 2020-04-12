@@ -116,10 +116,25 @@ const changeBGColor = () => {
  * @return {void} Nothing
 ***/
 
+
 const printQuote = () => {
-  changeBGColor();
-  document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
+  let count = 0;
+  let idInterval = setInterval(function() {
+    changeBGColor();
+    document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
+    count += 1;
+    if (count === 5) {
+      clearInterval(idInterval);
+    }
+ }, 10000);
+  
 };
+
+// const stopQuote = id =>
+//   clearInterval(id);
+// }
+
+
 
 /***
  * click event listener for the print quote button
@@ -127,4 +142,8 @@ const printQuote = () => {
 ***/
 
 // Selects the button element in the DOM that when clicked, invokes the printQuote function
+
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+
+

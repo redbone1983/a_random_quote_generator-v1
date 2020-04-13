@@ -46,8 +46,6 @@ const quotes = [
   }
 ];
 
-
-
 /***
  * `getRandomNumber` function
  * Generates a random number for selecting an array item
@@ -67,7 +65,7 @@ const getRandomNumber = arr => {
  * @return {object} - A quote object
 ***/
 
-const getRandomQuoteObj = quotesList => {
+const getRandomQuote = quotesList => {
   let quoteObject = quotesList[getRandomNumber(quotesList)];
   return quoteObject;
 };
@@ -93,8 +91,6 @@ const generateHtmlString = quoteObject => {
     if (prop === 'tag'){
       htmlString += `<div class="tag">${quoteObject["tag"]}</div>`;
     }
-
-    
   }
   htmlString += `</p>`;
   return htmlString;
@@ -120,22 +116,25 @@ const changeBGColor = () => {
 let stopInterval;
 
 const printQuote = () => {
-  // Initializing this to store a false boolean
-  stopInterval = false;
-  
+  changeButtonContent();
   let id = setInterval(function() {
-    // If the setInterval should stop
     if (stopInterval) {
-      // stop it
       clearInterval(id);
-    
-    // Otherwise
     } else {
-      // The program continues to run
       changeBGColor();
-      document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuoteObj(quotes));
+      document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuote(quotes));
     }
-  }, 10000);
+  }, 3000);
+}
+
+const changeButtonContent = () => {
+  if (document.getElementById('load-quote').innerHTML === `Show another quote`) {
+    stopInterval = false;
+    document.getElementById('load-quote').innerHTML = `Stop slideshow`;
+  } else {
+    document.getElementById('load-quote').innerHTML = `Show another quote`;
+    stopQuote();
+  }
 }
 
 // When invoked, this will stop the quote slideshow from running
@@ -148,11 +147,4 @@ const stopQuote = () => stopInterval = true;
 
 // Selects the `Show another quote` button in the DOM that when clicked, invokes the printQuote function
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-
-// Selects the `Stop slideshow` button in the DOM that when clicked, invokes the stopQuote function
-document.getElementById('stop-quote').addEventListener("click", stopQuote, false);
-
-
-
-
 

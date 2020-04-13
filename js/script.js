@@ -60,13 +60,32 @@ const getRandomNumber = arr => {
 
 /***
  * `getRandomQuote` function
- * Gets a quote object from the quotes array
+ * Gets a non-repeated quote object from the quotes array
  * @param {array} quotesList - An array of quote objects
  * @return {object} - A quote object
 ***/
 
+// Stores the index of the current printed quote
+let cache;
+
+// compares num arg to number stored in the global variable cache
+// if they are the same, then a new number is generated and reassigned to cache
+const numCache = num => {
+  num === cache ? cache = getRandomNumber(quotes) : cache = num;
+  return cache;
+}
+
 const getRandomQuote = quotesList => {
-  let quoteObject = quotesList[getRandomNumber(quotesList)];
+  let quoteObject;
+  let index = getRandomNumber(quotesList);
+
+  if (cache !== index) {
+    quoteObject = quotesList[numCache(index)];
+    return quoteObject;
+  } else {
+    index = getRandomNumber(quotesList);
+    quoteObject = quotesList[numCache(index)];
+  }
   return quoteObject;
 };
 
@@ -100,6 +119,7 @@ const changeBGColor = () => {
   red = Math.floor(Math.random() * 256);
   green = Math.floor(Math.random() * 256);
   blue = Math.floor(Math.random() * 256);
+  
   rgbColor = `rgb(${red}, ${green}, ${blue}`;
 
   document.querySelector('body').style.backgroundColor = `${rgbColor}`;
@@ -122,9 +142,10 @@ const printQuote = () => {
       clearInterval(id);
     } else {
       changeBGColor();
-      document.querySelector(`#quote-box`).innerHTML = generateHtmlString(getRandomQuote(quotes));
+      let quoteObject = getRandomQuote(quotes);
+      document.querySelector(`#quote-box`).innerHTML = generateHtmlString(quoteObject);
     }
-  }, 3000);
+  }, 5000);
 }
 
 const changeButtonContent = () => {
